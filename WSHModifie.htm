@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>Webservice_test</TITLE>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+<STYLE type=text/css>BODY {
+	MARGIN-TOP: 0px; MARGIN-LEFT: 0px; COLOR: #000000; FONT-FAMILY: Verdana; BACKGROUND-COLOR: white
+}
+#content {
+	FONT-SIZE: 0.7em; PADDING-BOTTOM: 2em; MARGIN-LEFT: 30px
+}
+A:link {
+	FONT-WEIGHT: bold; COLOR: #336699; TEXT-DECORATION: underline
+}
+A:visited {
+	FONT-WEIGHT: bold; COLOR: #6699cc; TEXT-DECORATION: underline
+}	
+A:active {
+	FONT-WEIGHT: bold; COLOR: #336699; TEXT-DECORATION: underline
+}
+A:hover {
+	FONT-WEIGHT: bold; COLOR: #cc3300; TEXT-DECORATION: underline
+}
+P {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 12px; COLOR: #000000; FONT-FAMILY: Verdana
+}
+PRE {
+	BORDER-RIGHT: #f0f0e0 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #f0f0e0 1px solid; MARGIN-TOP: -5px; PADDING-LEFT: 5px; FONT-SIZE: x-small; PADDING-BOTTOM: 5px; BORDER-LEFT: #f0f0e0 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #f0f0e0 1px solid; FONT-FAMILY: Courier New; BACKGROUND-COLOR: #e5e5cc
+}
+TD {
+	FONT-SIZE: 0.7em; COLOR: #000000; FONT-FAMILY: Verdana
+}
+H2 {
+	BORDER-TOP: #003366 1px solid; MARGIN-TOP: 25px; FONT-WEIGHT: bold; FONT-SIZE: 1.5em; MARGIN-BOTTOM: 10px; MARGIN-LEFT: -15px; COLOR: #003366
+}
+H3 {
+	MARGIN-TOP: 10px; FONT-SIZE: 1.1em; MARGIN-BOTTOM: 10px; MARGIN-LEFT: -15px; COLOR: #000000
+}
+UL {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 20px
+}
+OL {
+	MARGIN-TOP: 10px; MARGIN-LEFT: 20px
+}
+LI {
+	MARGIN-TOP: 10px; COLOR: #000000
+}
+FONT.value {
+	FONT-WEIGHT: bold; COLOR: darkblue
+}
+FONT.key {
+	FONT-WEIGHT: bold; COLOR: darkgreen
+}
+.heading1 {
+	MARGIN-TOP: 0px; PADDING-LEFT: 10px; FONT-WEIGHT: normal; FONT-SIZE: 26px; 
+	MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 3px; MARGIN-LEFT: -28px; WIDTH: 101%; COLOR: #FFFFCC; PADDING-TOP: 10px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #999999}
+.button {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #cccccc 1px solid; FONT-SIZE: 1em; BORDER-LEFT: #cccccc 1px solid; BORDER-BOTTOM: #666666 1px solid; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #dcdcdc
+}
+.frmheader {
+	FONT-WEIGHT: normal;
+	PADDING-BOTTOM: 2px;
+	COLOR: #000000;
+	PADDING-TOP: 2px;
+	border: 1px solid #dcdcdc;
+	text-indent: 4pt;
+}
+.frmtext {
+	MARGIN-TOP: 8px; FONT-SIZE: 0.7em; MARGIN-BOTTOM: 0px; MARGIN-LEFT: 32px; FONT-FAMILY: Verdana
+}
+.frmInput {
+	FONT-SIZE: 1em; FONT-FAMILY: Verdana
+}
+.intro {
+	MARGIN-LEFT: -28px;
+	background-color: #FFFFCC;
+	padding: 3px 3px 3px 10px;
+	border: 1px solid #999999;
+	width: 101%;
+	left: 0px;
+}
+</STYLE>
+
+<SCRIPT LANGUAGE="JavaScript">
+function construitxml()
+{
+	var requete;
+	requete="<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/1999/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/1999/XMLSchema\"><soap:Body>";
+	
+	requete = requete + "<WSHModifie xmlns=\"urn:Webservice_test\">";
+	
+	
+	requete = requete + "<tabValeurs xsd:type=\"xsd:string\">";
+	requete = requete + document.valeur.tabValeurs.value;
+	requete = requete + "</tabValeurs>";
+	
+	requete = requete + "<sNomFichier xsd:type=\"xsd:string\">";
+	requete = requete + document.valeur.sNomFichier.value;
+	requete = requete + "</sNomFichier>";
+	
+	requete = requete + "<nOptions xsd:type=\"xsd:int\">";
+	requete = requete + document.valeur.nOptions.value;
+	requete = requete + "</nOptions>";
+	
+	
+	requete = requete + "</WSHModifie>";
+	
+	requete = requete + "</soap:Body></soap:Envelope>";
+	document.xmlform.xml.value=requete;
+	document.xmlform.action.value="urn:Webservice_test/WSHModifie";
+	document.xmlform.submit();
+}
+</SCRIPT>
+
+</HEAD>
+<BODY>
+<DIV id=content>
+  <P class=heading1>Webservice_test - WSHModifie</P>
+  <SPAN>
+  <P class=intro><A 
+href="index.htm">Cliquez ici</A> 
+pour la description compl&egrave;te de ce service.</P>
+  <h4><font color="#000000" face="Arial, Helvetica, sans-serif">WSHModifie</font></h4>
+  
+  Pour tester cette op&eacute;ration, cliquez sur le bouton "Test". 
+  
+<form name="valeur" id="valeur">
+    <TABLE 
+cellPadding=4 cellSpacing=0 borderColor=#dcdcdc bgcolor="#FFFFCC" frame=box rules=none style="BORDER-COLLAPSE: collapse">
+      <TBODY>
+  <TR>
+          <TD bgcolor="#CCCCCC" class=frmheader style="BORDER-RIGHT: white 2px solid">Param&egrave;tre</TD>
+          <TD bgcolor="#CCCCCC" class=frmHeader>Valeur</TD>
+        </TR>
+  
+  <TR>
+    <TD class=frmText 
+    style="FONT-WEIGHT: normal; COLOR: #000000">tabValeurs:</TD>
+    <TD><INPUT class=frmInput size=50 name=tabValeurs></TD></TR>
+
+  <TR>
+    <TD class=frmText 
+    style="FONT-WEIGHT: normal; COLOR: #000000">sNomFichier:</TD>
+    <TD><INPUT class=frmInput size=50 name=sNomFichier></TD></TR>
+
+  <TR>
+    <TD class=frmText 
+    style="FONT-WEIGHT: normal; COLOR: #000000">nOptions:</TD>
+    <TD><INPUT class=frmInput size=50 name=nOptions></TD></TR>
+
+  <TR>
+    <TD></TD>
+    <TD 
+align=right><INPUT class=button type=button value=Test onclick="construitxml()";></TD></TR></TBODY></TABLE></form>
+ 
+ 
+
+<form 
+	action="%ADRESSE%"
+	method=post 
+	name="xmlform" id="xmlform" 
+	target="_self">
+<input type="hidden" value=""  name="xml" id="xml">
+<input type="hidden" value=""  name="action" id="action">
+
+
+</form></span></DIV></BODY></HTML>

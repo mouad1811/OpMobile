@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:s0="urn:Webservice_test" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="urn:Webservice_test">
+  <types>
+    <xsd:schema elementFormDefault="unqualified" targetNamespace="urn:Webservice_test">
+      <xsd:simpleType name="WLChar">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="1" fixed="true"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="WSID" type="xsd:hexBinary"/>
+      <xsd:complexType name="STEtatFichier" s0:nomcomplet="pAccèsDistant.pAccèsDistant.STEtatFichier">
+        <xsd:sequence>
+          <xsd:element name="nNumeroEnregistrement" type="xsd:int"/>
+          <xsd:element name="sRubriqueParcours" type="xsd:string"/>
+          <xsd:element name="tabRubrique" type="xsd:string" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="STEnreg" s0:nomcomplet="pAccèsDistant.pAccèsDistant.STEnreg">
+        <xsd:sequence>
+          <xsd:element name="nEtatEnregistrement" type="xsd:int"/>
+          <xsd:element name="tabValeur" type="xsd:string" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="STResultat" s0:nomcomplet="pAccèsDistant.pAccèsDistant.STResultat">
+        <xsd:sequence>
+          <xsd:element name="bTrouve" type="xsd:boolean"/>
+          <xsd:element name="bEnDehors" type="xsd:boolean"/>
+          <xsd:element name="nNumeroEnregistrement" type="xsd:int"/>
+          <xsd:element name="bErreurDetectee" type="xsd:boolean"/>
+          <xsd:element name="sErreurInfo" type="xsd:string"/>
+          <xsd:element name="tabRubrique" type="xsd:string" maxOccurs="unbounded"/>
+          <xsd:element name="tabEnreg" type="s0:STEnreg" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="WSHAjoute">
+        <xsd:sequence>
+          <xsd:element name="tabValeurs" type="xsd:string" maxOccurs="unbounded"/>
+          <xsd:element name="sNomFichier" type="xsd:string"/>
+          <xsd:element name="nOptions" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="WSHModifie">
+        <xsd:sequence>
+          <xsd:element name="tabValeurs" type="xsd:string" maxOccurs="unbounded"/>
+          <xsd:element name="sNomFichier" type="xsd:string"/>
+          <xsd:element name="nOptions" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="WSHEcrit">
+        <xsd:sequence>
+          <xsd:element name="tabValeurs" type="xsd:string" maxOccurs="unbounded"/>
+          <xsd:element name="sNomFichier" type="xsd:string"/>
+          <xsd:element name="nEnreg" type="xsd:int"/>
+          <xsd:element name="nOptions" type="xsd:int"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </types>
+  <message name="Webservice_test_WSHLitRecherchePremier_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="sRubrique" type="xsd:string"/>
+    <part name="sValeur" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitRecherchePremier_MessageOut">
+    <part name="WSHLitRecherchePremierResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitRecherche_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="sRubrique" type="xsd:string"/>
+    <part name="sValeur" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitRecherche_MessageOut">
+    <part name="WSHLitRechercheResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLit_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="nNumeroEnregistrement" type="xsd:int"/>
+  </message>
+  <message name="Webservice_test_WSHLit_MessageOut">
+    <part name="WSHLitResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitPremier_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="sRubriqueCle" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitPremier_MessageOut">
+    <part name="WSHLitPremierResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitSuivant_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="sRubriqueCle" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitSuivant_MessageOut">
+    <part name="WSHLitSuivantResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitDernier_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="sRubriqueCle" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitDernier_MessageOut">
+    <part name="WSHLitDernierResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitRechercheDernier_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="sRubrique" type="xsd:string"/>
+    <part name="sValeur" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitRechercheDernier_MessageOut">
+    <part name="WSHLitRechercheDernierResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHAjoute_MessageIn">
+    <part name="WSHAjoute" type="s0:WSHAjoute"/>
+  </message>
+  <message name="Webservice_test_WSHAjoute_MessageOut">
+    <part name="WSHAjouteResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHModifie_MessageIn">
+    <part name="WSHModifie" type="s0:WSHModifie"/>
+  </message>
+  <message name="Webservice_test_WSHModifie_MessageOut">
+    <part name="WSHModifieResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHSupprime_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="nNumEnr" type="xsd:int"/>
+    <part name="nOptions" type="xsd:int"/>
+  </message>
+  <message name="Webservice_test_WSHSupprime_MessageOut">
+    <part name="WSHSupprimeResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitPrecedent_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="sRubriqueCle" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHLitPrecedent_MessageOut">
+    <part name="WSHLitPrecedentResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHEcrit_MessageIn">
+    <part name="WSHEcrit" type="s0:WSHEcrit"/>
+  </message>
+  <message name="Webservice_test_WSHEcrit_MessageOut">
+    <part name="WSHEcritResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHRequeteExec_MessageIn">
+    <part name="sCodeSQL" type="xsd:string"/>
+    <part name="sNomReq" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHRequeteExec_MessageOut">
+    <part name="WSHRequeteExecResult" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHRecherche_MessageIn">
+    <part name="sFichier" type="xsd:string"/>
+    <part name="sRubrique" type="xsd:string"/>
+    <part name="sValeur" type="xsd:string"/>
+  </message>
+  <message name="Webservice_test_WSHRecherche_MessageOut">
+    <part name="WSHRechercheResult" type="xsd:string"/>
+  </message>
+  <message name="WSID">
+    <part name="WSIDValue" element="s0:WSID"/>
+  </message>
+  <portType name="Webservice_testSOAPPortType">
+    <operation name="WSHLitRecherchePremier">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Recherche le premier enregistrement d'un fichier selon un cl&amp;eacute; donn&amp;eacute;e correspondant &amp;agrave; une valeur donn&amp;eacute;e (recherche &amp;agrave; l'identique)&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	sRubrique (cha&amp;#238;ne ANSI) : Nom de la rubrique de parcours (si cha&amp;#238;ne vide, utilise la m&amp;ecirc;me rubrique que lors du pr&amp;eacute;c&amp;eacute;dent parcours)&lt;br /&gt;	sValeur (cha&amp;#238;ne ANSI) : Valeur recherch&amp;eacute;e&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHLitRecherchePremier_MessageIn"/>
+      <output message="s0:Webservice_test_WSHLitRecherchePremier_MessageOut"/>
+    </operation>
+    <operation name="WSHLitRecherche">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Recherche le premier enregistrement d'un fichier selon un cl&amp;eacute; donn&amp;eacute;e correspondant &amp;agrave; une valeur donn&amp;eacute;e (recherche g&amp;eacute;n&amp;eacute;rique)&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	sRubrique (cha&amp;#238;ne ANSI) : Nom de la rubrique de parcours (si cha&amp;#238;ne vide, utilise la m&amp;ecirc;me rubrique que lors du pr&amp;eacute;c&amp;eacute;dent parcours)&lt;br /&gt;	sValeur (cha&amp;#238;ne ANSI) : Valeur recherch&amp;eacute;e&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHLitRecherche_MessageIn"/>
+      <output message="s0:Webservice_test_WSHLitRecherche_MessageOut"/>
+    </operation>
+    <operation name="WSHLit">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Lit un enregistrement &amp;agrave; un emplacement donn&amp;eacute; d'un fichier&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier &amp;agrave; manipuler&lt;br /&gt;	nNumeroEnregistrement (entier) : Num&amp;eacute;ro d'enregistrement &amp;agrave; lire&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHLit_MessageIn"/>
+      <output message="s0:Webservice_test_WSHLit_MessageOut"/>
+    </operation>
+    <operation name="WSHLitPremier">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Lit le premier enregistrement d'un fichier selon un cl&amp;eacute; donn&amp;eacute;e&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	sRubriqueCle (cha&amp;#238;ne ANSI - valeur par d&amp;eacute;faut=&amp;quot;&amp;quot;) : Nom de la rubrique de parcours (si cha&amp;#238;ne vide, utilise la m&amp;ecirc;me rubrique que lors du pr&amp;eacute;c&amp;eacute;dent parcours)&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHLitPremier_MessageIn"/>
+      <output message="s0:Webservice_test_WSHLitPremier_MessageOut"/>
+    </operation>
+    <operation name="WSHLitSuivant">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Lit l'enregistrement suivant d'un fichier selon un cl&amp;eacute; donn&amp;eacute;e&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	sRubriqueCle (cha&amp;#238;ne ANSI - valeur par d&amp;eacute;faut=&amp;quot;&amp;quot;) : Nom de la rubrique de parcours (si cha&amp;#238;ne vide, utilise la m&amp;ecirc;me rubrique que lors du pr&amp;eacute;c&amp;eacute;dent parcours)&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHLitSuivant_MessageIn"/>
+      <output message="s0:Webservice_test_WSHLitSuivant_MessageOut"/>
+    </operation>
+    <operation name="WSHLitDernier">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Lit le dernier enregistrement d'un fichier selon un cl&amp;eacute; donn&amp;eacute;e&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	sRubriqueCle (cha&amp;#238;ne ANSI - valeur par d&amp;eacute;faut=&amp;quot;&amp;quot;) : Nom de la rubrique de parcours (si cha&amp;#238;ne vide, utilise la m&amp;ecirc;me rubrique que lors du pr&amp;eacute;c&amp;eacute;dent parcours)&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHLitDernier_MessageIn"/>
+      <output message="s0:Webservice_test_WSHLitDernier_MessageOut"/>
+    </operation>
+    <operation name="WSHLitRechercheDernier">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Recherche le dernier enregistrement d'un fichier selon un cl&amp;eacute; donn&amp;eacute;e correspondant &amp;agrave; une valeur donn&amp;eacute;e (recherche &amp;agrave; l'identique)&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	sRubrique (cha&amp;#238;ne ANSI) : Nom de la rubrique de parcours (si cha&amp;#238;ne vide, utilise la m&amp;ecirc;me rubrique que lors du pr&amp;eacute;c&amp;eacute;dent parcours)&lt;br /&gt;	sValeur (cha&amp;#238;ne ANSI) : Valeur recherch&amp;eacute;e&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHLitRechercheDernier_MessageIn"/>
+      <output message="s0:Webservice_test_WSHLitRechercheDernier_MessageOut"/>
+    </operation>
+    <operation name="WSHAjoute">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Ajoute un enregistrement dans un fichier&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	tabValeurs (tableau) : tableau des valeurs &amp;agrave; affecter aux rubriques&lt;br /&gt;	sNomFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	nOptions (valeur par d&amp;eacute;faut=hEcritureD&amp;eacute;faut) : Options de la fonction HAjoute&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHAjoute_MessageIn"/>
+      <output message="s0:Webservice_test_WSHAjoute_MessageOut"/>
+    </operation>
+    <operation name="WSHModifie">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Modifie un enregistrement dans un fichier&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	tabValeurs (tableau) : tableau des valeurs &amp;agrave; affecter aux rubriques&lt;br /&gt;	sNomFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	nOptions (entier - valeur par d&amp;eacute;faut=hEcritureD&amp;eacute;faut) : Options de la fonction HModifie&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHModifie_MessageIn"/>
+      <output message="s0:Webservice_test_WSHModifie_MessageOut"/>
+    </operation>
+    <operation name="WSHSupprime">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Supprime un enregistrement dans un fichier&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	nNumEnr (entier - valeur par d&amp;eacute;faut=0) : Num&amp;eacute;ro de l'enregistrement (enregistrement en cours si no pr&amp;eacute;cis&amp;eacute;)&lt;br /&gt;	nOptions (entier - valeur par d&amp;eacute;faut=hV&amp;eacute;rifieInt&amp;eacute;grit&amp;eacute;) : Options de la fonction HSupprime (par d&amp;eacute;faut, v&amp;eacute;rifie l&amp;#146;int&amp;eacute;grit&amp;eacute; r&amp;eacute;f&amp;eacute;rentielle)&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHSupprime_MessageIn"/>
+      <output message="s0:Webservice_test_WSHSupprime_MessageOut"/>
+    </operation>
+    <operation name="WSHLitPrecedent">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Lit l'enregistrement pr&amp;eacute;c&amp;eacute;dent d'un fichier selon un cl&amp;eacute; donn&amp;eacute;e&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	sRubriqueCle (cha&amp;#238;ne ANSI - valeur par d&amp;eacute;faut=&amp;quot;&amp;quot;) : Nom de la rubrique de parcours (si cha&amp;#238;ne vide, utilise la m&amp;ecirc;me rubrique que lors du pr&amp;eacute;c&amp;eacute;dent parcours)&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHLitPrecedent_MessageIn"/>
+      <output message="s0:Webservice_test_WSHLitPrecedent_MessageOut"/>
+    </operation>
+    <operation name="WSHEcrit">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Ecrit un enregistrement dans un fichier&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	tabValeurs (tableau) : tableau des valeurs &amp;agrave; affecter aux rubriques&lt;br /&gt;	sNomFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	nEnreg (entier) : num&amp;eacute;ro de l'enregistrement &amp;agrave; modifier&lt;br /&gt;	nOptions (entier - valeur par d&amp;eacute;faut=hEcritureD&amp;eacute;faut) : Options de la fonction HEcrit&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant l'enregistrement lu et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHEcrit_MessageIn"/>
+      <output message="s0:Webservice_test_WSHEcrit_MessageOut"/>
+    </operation>
+    <operation name="WSHRequeteExec">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Ex&amp;eacute;cute une requ&amp;ecirc;te sur la base de donn&amp;eacute;es et retourne le r&amp;eacute;sultat&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sCodeSQL (cha&amp;#238;ne ANSI) : Code SQL de la requ&amp;ecirc;te&lt;br /&gt;	sNomReq (cha&amp;#238;ne ANSI) : Nom de la requ&amp;ecirc;te (ce nom est utilis&amp;eacute; pour manipuler les enregistrements de la requ&amp;ecirc;te)&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant les enregistrements de la requ&amp;ecirc;te et les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHRequeteExec_MessageIn"/>
+      <output message="s0:Webservice_test_WSHRequeteExec_MessageOut"/>
+    </operation>
+    <operation name="WSHRecherche">
+      <documentation> R&amp;eacute;sum&amp;eacute; : Recherche un enregistrement dans un fichier&lt;br /&gt; Param&amp;egrave;tres :&lt;br /&gt;	sFichier (cha&amp;#238;ne ANSI) : Nom du fichier&lt;br /&gt;	sRubrique (cha&amp;#238;ne ANSI) : Rubrique de recherche&lt;br /&gt;	sValeur (cha&amp;#238;ne ANSI) : Valeur recherch&amp;eacute;e&lt;br /&gt; Valeur de retour :&lt;br /&gt; 	cha&amp;#238;ne ANSI : Structure contenant les infos d'&amp;eacute;tat s&amp;eacute;rialis&amp;eacute;e en XML&lt;br /&gt;</documentation>
+      <input message="s0:Webservice_test_WSHRecherche_MessageIn"/>
+      <output message="s0:Webservice_test_WSHRecherche_MessageOut"/>
+    </operation>
+  </portType>
+  <binding name="Webservice_testSOAPBinding" type="s0:Webservice_testSOAPPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="WSHLitRecherchePremier">
+      <soap:operation soapAction="urn:Webservice_test/WSHLitRecherchePremier" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHLitRecherche">
+      <soap:operation soapAction="urn:Webservice_test/WSHLitRecherche" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHLit">
+      <soap:operation soapAction="urn:Webservice_test/WSHLit" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHLitPremier">
+      <soap:operation soapAction="urn:Webservice_test/WSHLitPremier" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHLitSuivant">
+      <soap:operation soapAction="urn:Webservice_test/WSHLitSuivant" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHLitDernier">
+      <soap:operation soapAction="urn:Webservice_test/WSHLitDernier" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHLitRechercheDernier">
+      <soap:operation soapAction="urn:Webservice_test/WSHLitRechercheDernier" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHAjoute">
+      <soap:operation soapAction="urn:Webservice_test/WSHAjoute" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHModifie">
+      <soap:operation soapAction="urn:Webservice_test/WSHModifie" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHSupprime">
+      <soap:operation soapAction="urn:Webservice_test/WSHSupprime" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHLitPrecedent">
+      <soap:operation soapAction="urn:Webservice_test/WSHLitPrecedent" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHEcrit">
+      <soap:operation soapAction="urn:Webservice_test/WSHEcrit" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHRequeteExec">
+      <soap:operation soapAction="urn:Webservice_test/WSHRequeteExec" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+    <operation name="WSHRecherche">
+      <soap:operation soapAction="urn:Webservice_test/WSHRecherche" style="document"/>
+      <input>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+        <soap:header use="literal" message="s0:WSID" part="WSIDValue"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="Webservice_test">
+    <port name="Webservice_testSOAPPort" binding="s0:Webservice_testSOAPBinding">
+      <soap:address location="%ADRESSE%"/>
+    </port>
+  </service>
+</definitions>
